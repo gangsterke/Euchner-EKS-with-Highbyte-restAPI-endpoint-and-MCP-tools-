@@ -24,7 +24,7 @@ to be added in claude_desktop_config.json
         
 **MCP tooling**
 
+<img width="762" height="533" alt="image" src="https://github.com/user-attachments/assets/9d405f9a-18e3-409f-831a-2b46ebecc6f5" />
 
-<img width="1149" height="944" alt="image" src="https://github.com/user-attachments/assets/d25a81bf-be7b-42e5-b322-687bc4eac291" />
 
 <img width="1153" height="957" alt="image" src="https://github.com/user-attachments/assets/2494a2a8-a181-4c8f-bee8-c5738c383fe2" />
