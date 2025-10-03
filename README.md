@@ -18,23 +18,8 @@ Used Highbyte to create a restAPI endpoint and MCP tooling to work with the Euch
 
 to be added in claude_desktop_config.json
         **remark: avoid using spaces in the name of the MCP server**
-		"highbyte": {
-			"command": "npx",
-			"args": [
-			"-y",
-			"mcp-remote",
-			"http://192.168.2.41:45345/mcp/",
-			"--allow-http",
-			"--transport",
-			"http-only",
-			"--header",
-            "Authorization:${AUTH_HEADER}"
-			],
-			"env": {
-			"AUTH_HEADER": "Bearer <your key>"
-			}
-		}
 
+<img width="653" height="388" alt="image" src="https://github.com/user-attachments/assets/d4fed2cf-cdb6-46d0-b71b-e65f26379185" />
 
         
 **MCP tooling**
@@ -42,4 +27,4 @@ to be added in claude_desktop_config.json
 
 <img width="1149" height="944" alt="image" src="https://github.com/user-attachments/assets/d25a81bf-be7b-42e5-b322-687bc4eac291" />
 
-<img width="778" height="567" alt="image" src="https://github.com/user-attachments/assets/f8bbcbaf-efb7-4933-8681-9b7cc39588be" />
+<img width="1153" height="957" alt="image" src="https://github.com/user-attachments/assets/2494a2a8-a181-4c8f-bee8-c5738c383fe2" />
