@@ -28,3 +28,12 @@ to be added in claude_desktop_config.json
 
 
 <img width="1153" height="957" alt="image" src="https://github.com/user-attachments/assets/2494a2a8-a181-4c8f-bee8-c5738c383fe2" />
+
+getAllKeyInformation
+<img width="1750" height="776" alt="image" src="https://github.com/user-attachments/assets/765f04cc-6a18-4a19-97d6-eb04abafc830" />
+
+getOneKeyInformation
+
+getAccessLevel
+
+updateAccessLevel
