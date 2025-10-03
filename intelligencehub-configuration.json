@@ -1,0 +1,513 @@
+{
+  "productInfo" : {
+    "company" : "HighByte",
+    "product" : "IntelligenceHub",
+    "version" : "4.2.1",
+    "build" : "2025.8.8.10",
+    "stage" : "Release"
+  },
+  "project" : {
+    "version" : 11,
+    "connections" : [ {
+      "name" : "eksSQLiteDB",
+      "uri" : "jdbc.sqlite://SQLiteConnection",
+      "description" : "SQLiteConnection to SQLiteTraceability database",
+      "tags" : [ "eks" ],
+      "writes" : {
+        "flattenModeledValues" : false
+      },
+      "subscriptions" : { },
+      "storeForward" : {
+        "enabled" : false,
+        "maxEntries" : 100,
+        "waitOnFailureInterval" : {
+          "duration" : 1,
+          "units" : "Seconds"
+        }
+      },
+      "settings" : {
+        "strategy" : {
+          "type" : "default"
+        },
+        "database" : "C:\\Users\\koen_\\eksSQLiteDB.db"
+      }
+    } ],
+    "inputs" : [ {
+      "name" : "getAllKeysInformation",
+      "connection" : "eksSQLiteDB",
+      "type" : "jdbc.sqlite",
+      "qualifier" : {
+        "query" : "select * from tblUserDataBase;"
+      },
+      "cacheLifetime" : {
+        "enabled" : false
+      },
+      "template" : {
+        "type" : "Off"
+      },
+      "parameters" : {
+        "type" : "EmptyParameters"
+      }
+    }, {
+      "name" : "getEKSAccessLevel",
+      "connection" : "eksSQLiteDB",
+      "type" : "jdbc.sqlite",
+      "qualifier" : {
+        "query" : "select [accessLevel] from tblUserDataBase where keyID= '{{this.keyID}}';"
+      },
+      "cacheLifetime" : {
+        "enabled" : false
+      },
+      "template" : {
+        "type" : "Off"
+      },
+      "parameters" : {
+        "type" : "inline",
+        "model" : {
+          "name" : "params",
+          "tags" : [ ],
+          "attributes" : [ {
+            "attributeType" : "Internal",
+            "name" : "keyID",
+            "nullable" : false,
+            "required" : false,
+            "array" : false,
+            "defaultValue" : "KEY1",
+            "internalType" : "String"
+          } ]
+        }
+      }
+    }, {
+      "name" : "getOneKeyInformation",
+      "connection" : "eksSQLiteDB",
+      "type" : "jdbc.sqlite",
+      "qualifier" : {
+        "query" : "select * from tblUserDataBase where keyID= '{{this.keyID}}';"
+      },
+      "cacheLifetime" : {
+        "enabled" : false
+      },
+      "template" : {
+        "type" : "Off"
+      },
+      "parameters" : {
+        "type" : "inline",
+        "model" : {
+          "name" : "params",
+          "tags" : [ ],
+          "attributes" : [ {
+            "attributeType" : "Internal",
+            "name" : "keyID",
+            "nullable" : false,
+            "required" : false,
+            "array" : false,
+            "defaultValue" : "KEY1",
+            "internalType" : "String"
+          } ]
+        }
+      }
+    } ],
+    "outputs" : [ {
+      "name" : "insertNewKey",
+      "connection" : "eksSQLiteDB",
+      "type" : "jdbc.sqlite",
+      "qualifier" : {
+        "writeType" : "insert",
+        "createOption" : "off",
+        "tableCacheInterval" : {
+          "duration" : 1,
+          "units" : "Hours"
+        },
+        "breakupArrays" : false,
+        "whereColumn" : "keyID='{{this.keyID}}'",
+        "table" : "tblUserDataBase",
+        "logAsJSON" : false
+      }
+    }, {
+      "name" : "updateAccessLevel",
+      "connection" : "eksSQLiteDB",
+      "type" : "jdbc.sqlite",
+      "qualifier" : {
+        "writeType" : "update",
+        "createOption" : "off",
+        "tableCacheInterval" : {
+          "duration" : 1,
+          "units" : "Hours"
+        },
+        "breakupArrays" : false,
+        "whereColumn" : "keyID='{{this.keyID}}'",
+        "table" : "tblUserDataBase",
+        "logAsJSON" : false
+      }
+    } ],
+    "modeling" : {
+      "models" : [ ],
+      "instances" : [ ]
+    },
+    "conditions" : [ ],
+    "functions" : [ ],
+    "tags" : [ ],
+    "pipelines" : [ {
+      "name" : "createNewKey",
+      "description" : "Used to add a new key. The following parameters are needed: keyID, Locked, Last_name, First_Name, CRC and accessLevel. If data for more than one key is provided, the keys are seperated by a ;",
+      "groupAs" : "/mcpTools/eks",
+      "tags" : [ "eks" ],
+      "inputStages" : [ "Write" ],
+      "stages" : [ {
+        "name" : "Write",
+        "display" : {
+          "position" : {
+            "x" : 240,
+            "y" : 0
+          }
+        },
+        "config" : {
+          "type" : ".WriteConfig",
+          "failureOutputs" : [ ],
+          "references" : [ "{{Connection.eksSQLiteDB.insertNewKey}}" ],
+          "writeReturn" : "ignore"
+        },
+        "outputs" : [ ]
+      } ],
+      "trackActivity" : true,
+      "triggers" : [ {
+        "name" : "APITrigger",
+        "display" : {
+          "position" : {
+            "x" : -450,
+            "y" : 0
+          }
+        },
+        "config" : {
+          "type" : ".TriggerApi",
+          "enabled" : true,
+          "parameters" : {
+            "type" : "inline",
+            "model" : {
+              "name" : "params",
+              "tags" : [ ],
+              "attributes" : [ {
+                "attributeType" : "Internal",
+                "name" : "keyID",
+                "nullable" : false,
+                "required" : false,
+                "array" : false,
+                "internalType" : "String"
+              }, {
+                "attributeType" : "Internal",
+                "name" : "Locked",
+                "nullable" : false,
+                "required" : false,
+                "array" : false,
+                "internalType" : "Boolean"
+              }, {
+                "attributeType" : "Internal",
+                "name" : "Last_name",
+                "nullable" : false,
+                "required" : false,
+                "array" : false,
+                "internalType" : "String"
+              }, {
+                "attributeType" : "Internal",
+                "name" : "First_name",
+                "nullable" : false,
+                "required" : false,
+                "array" : false,
+                "internalType" : "String"
+              }, {
+                "attributeType" : "Internal",
+                "name" : "KeyCRC",
+                "nullable" : false,
+                "required" : false,
+                "array" : false,
+                "internalType" : "String"
+              }, {
+                "attributeType" : "Internal",
+                "name" : "accessLevel",
+                "nullable" : false,
+                "required" : false,
+                "array" : false,
+                "internalType" : "Int16"
+              } ]
+            }
+          }
+        }
+      } ],
+      "errorHandler" : {
+        "type" : "default"
+      }
+    }, {
+      "name" : "getAccessLevel",
+      "description" : "Pipeline to getAccessLevel: one parameter: keyID",
+      "groupAs" : "/mcpTools/eks",
+      "tags" : [ "eks" ],
+      "inputStages" : [ "Read" ],
+      "stages" : [ {
+        "name" : "Read",
+        "display" : {
+          "position" : {
+            "x" : 240,
+            "y" : 0
+          }
+        },
+        "config" : {
+          "type" : ".ReadConfig",
+          "failureOutputs" : [ ],
+          "reference" : {
+            "type" : "Input",
+            "name" : "getEKSAccessLevel",
+            "params" : {
+              "keyID" : null
+            },
+            "path" : "",
+            "connectionName" : "eksSQLiteDB"
+          }
+        },
+        "outputs" : [ "Return" ]
+      }, {
+        "name" : "Return",
+        "display" : {
+          "position" : {
+            "x" : 690,
+            "y" : 0
+          }
+        },
+        "config" : {
+          "type" : ".ReturnConfig"
+        },
+        "outputs" : [ ]
+      } ],
+      "trackActivity" : false,
+      "triggers" : [ {
+        "name" : "APITrigger",
+        "display" : {
+          "position" : {
+            "x" : -450,
+            "y" : 0
+          }
+        },
+        "config" : {
+          "type" : ".TriggerApi",
+          "enabled" : true,
+          "parameters" : {
+            "type" : "inline",
+            "model" : {
+              "name" : "params",
+              "tags" : [ ],
+              "attributes" : [ {
+                "attributeType" : "Internal",
+                "name" : "keyID",
+                "nullable" : false,
+                "required" : false,
+                "array" : false,
+                "defaultValue" : "KEY1",
+                "internalType" : "String"
+              } ]
+            }
+          }
+        }
+      } ],
+      "errorHandler" : {
+        "type" : "default"
+      }
+    }, {
+      "name" : "getAllKeyInformation",
+      "description" : "Pipeline to retrieve information from all keys",
+      "groupAs" : "/mcpTools/eks",
+      "tags" : [ "eks" ],
+      "inputStages" : [ "Read" ],
+      "stages" : [ {
+        "name" : "Read",
+        "display" : {
+          "position" : {
+            "x" : 241,
+            "y" : 0
+          }
+        },
+        "config" : {
+          "type" : ".ReadConfig",
+          "failureOutputs" : [ ],
+          "reference" : {
+            "type" : "Input",
+            "name" : "getAllKeysInformation",
+            "params" : { },
+            "path" : "",
+            "connectionName" : "eksSQLiteDB"
+          }
+        },
+        "outputs" : [ "Return" ]
+      }, {
+        "name" : "Return",
+        "display" : {
+          "position" : {
+            "x" : 690,
+            "y" : 0
+          }
+        },
+        "config" : {
+          "type" : ".ReturnConfig"
+        },
+        "outputs" : [ ]
+      } ],
+      "trackActivity" : false,
+      "triggers" : [ {
+        "name" : "APITrigger",
+        "display" : {
+          "position" : {
+            "x" : -450,
+            "y" : 0
+          }
+        },
+        "config" : {
+          "type" : ".TriggerApi",
+          "enabled" : true,
+          "parameters" : {
+            "type" : "EmptyParameters"
+          }
+        }
+      } ],
+      "errorHandler" : {
+        "type" : "default"
+      }
+    }, {
+      "name" : "getOneKeyInformation",
+      "description" : "Pipeline to retrieve information from one key. The keyID is a parameter for this tool",
+      "groupAs" : "/mcpTools/eks",
+      "tags" : [ "eks" ],
+      "inputStages" : [ "Read" ],
+      "stages" : [ {
+        "name" : "Read",
+        "display" : {
+          "position" : {
+            "x" : 241,
+            "y" : 0
+          }
+        },
+        "config" : {
+          "type" : ".ReadConfig",
+          "failureOutputs" : [ ],
+          "reference" : {
+            "type" : "Input",
+            "name" : "getOneKeyInformation",
+            "params" : {
+              "keyID" : null
+            },
+            "path" : "",
+            "connectionName" : "eksSQLiteDB"
+          }
+        },
+        "outputs" : [ "Return" ]
+      }, {
+        "name" : "Return",
+        "display" : {
+          "position" : {
+            "x" : 690,
+            "y" : 0
+          }
+        },
+        "config" : {
+          "type" : ".ReturnConfig"
+        },
+        "outputs" : [ ]
+      } ],
+      "trackActivity" : false,
+      "triggers" : [ {
+        "name" : "APITrigger",
+        "display" : {
+          "position" : {
+            "x" : -450,
+            "y" : 0
+          }
+        },
+        "config" : {
+          "type" : ".TriggerApi",
+          "enabled" : true,
+          "parameters" : {
+            "type" : "inline",
+            "model" : {
+              "name" : "params",
+              "tags" : [ ],
+              "attributes" : [ {
+                "attributeType" : "Internal",
+                "name" : "keyID",
+                "nullable" : false,
+                "required" : false,
+                "array" : false,
+                "internalType" : "String"
+              } ]
+            }
+          }
+        }
+      } ],
+      "errorHandler" : {
+        "type" : "default"
+      }
+    }, {
+      "name" : "updateAccessLevel",
+      "description" : "Used to update the accesslevel for a certain key or keyID",
+      "groupAs" : "/mcpTools/eks",
+      "tags" : [ "eks" ],
+      "inputStages" : [ "Write" ],
+      "stages" : [ {
+        "name" : "Write",
+        "display" : {
+          "position" : {
+            "x" : 240,
+            "y" : 0
+          }
+        },
+        "config" : {
+          "type" : ".WriteConfig",
+          "failureOutputs" : [ ],
+          "references" : [ "{{Connection.eksSQLiteDB.updateAccessLevel}}" ],
+          "writeReturn" : "ignore"
+        },
+        "outputs" : [ ]
+      } ],
+      "trackActivity" : true,
+      "triggers" : [ {
+        "name" : "APITrigger",
+        "display" : {
+          "position" : {
+            "x" : -468,
+            "y" : 0
+          }
+        },
+        "config" : {
+          "type" : ".TriggerApi",
+          "enabled" : true,
+          "parameters" : {
+            "type" : "inline",
+            "model" : {
+              "name" : "params",
+              "tags" : [ ],
+              "attributes" : [ {
+                "attributeType" : "Internal",
+                "name" : "keyID",
+                "nullable" : false,
+                "required" : false,
+                "array" : false,
+                "internalType" : "String"
+              }, {
+                "attributeType" : "Internal",
+                "name" : "accessLevel",
+                "nullable" : false,
+                "required" : false,
+                "array" : false,
+                "internalType" : "Int16"
+              } ]
+            }
+          }
+        }
+      } ],
+      "errorHandler" : {
+        "type" : "default"
+      }
+    } ],
+    "namespace" : [ ]
+  },
+  "network" : {
+    "groups" : [ ],
+    "hubs" : [ ]
+  }
+}
