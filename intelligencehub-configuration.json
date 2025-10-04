@@ -72,7 +72,6 @@
             "nullable" : false,
             "required" : false,
             "array" : false,
-            "defaultValue" : "KEY1",
             "internalType" : "String"
           } ]
         }
@@ -101,7 +100,6 @@
             "nullable" : false,
             "required" : false,
             "array" : false,
-            "defaultValue" : "KEY1",
             "internalType" : "String"
           } ]
         }
@@ -252,12 +250,12 @@
         },
         "config" : {
           "type" : ".ReadConfig",
-          "failureOutputs" : [ ],
+          "failureOutputs" : [ "Error" ],
           "reference" : {
             "type" : "Input",
             "name" : "getEKSAccessLevel",
             "params" : {
-              "keyID" : null
+              "keyID" : "{{event.value.keyID}}"
             },
             "path" : "",
             "connectionName" : "eksSQLiteDB"
@@ -276,8 +274,21 @@
           "type" : ".ReturnConfig"
         },
         "outputs" : [ ]
+      }, {
+        "name" : "Error",
+        "display" : {
+          "position" : {
+            "x" : 691,
+            "y" : 102
+          }
+        },
+        "config" : {
+          "type" : ".ErrorConfig",
+          "errorMessage" : "Error"
+        },
+        "outputs" : [ ]
       } ],
-      "trackActivity" : false,
+      "trackActivity" : true,
       "triggers" : [ {
         "name" : "APITrigger",
         "display" : {
@@ -300,7 +311,6 @@
                 "nullable" : false,
                 "required" : false,
                 "array" : false,
-                "defaultValue" : "KEY1",
                 "internalType" : "String"
               } ]
             }
@@ -340,8 +350,8 @@
         "name" : "Return",
         "display" : {
           "position" : {
-            "x" : 690,
-            "y" : 0
+            "x" : 766,
+            "y" : 25
           }
         },
         "config" : {
@@ -390,7 +400,7 @@
             "type" : "Input",
             "name" : "getOneKeyInformation",
             "params" : {
-              "keyID" : null
+              "keyID" : "{{event.value.keyID}}"
             },
             "path" : "",
             "connectionName" : "eksSQLiteDB"
@@ -401,8 +411,8 @@
         "name" : "Return",
         "display" : {
           "position" : {
-            "x" : 690,
-            "y" : 0
+            "x" : 628,
+            "y" : -13
           }
         },
         "config" : {
@@ -410,7 +420,7 @@
         },
         "outputs" : [ ]
       } ],
-      "trackActivity" : false,
+      "trackActivity" : true,
       "triggers" : [ {
         "name" : "APITrigger",
         "display" : {
