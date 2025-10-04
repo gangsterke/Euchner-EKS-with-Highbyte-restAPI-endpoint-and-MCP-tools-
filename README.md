@@ -39,3 +39,13 @@ getAccessLevel
 <img width="896" height="825" alt="image" src="https://github.com/user-attachments/assets/93b334f9-ee53-451c-b507-427f9e69a1ed" />
 
 updateAccessLevel
+
+
+**PLC code**
+
+<img width="630" height="645" alt="image" src="https://github.com/user-attachments/assets/11a19bd2-8c8d-44e0-8ffb-9b51c47a454d" />
+
+<img width="700" height="270" alt="image" src="https://github.com/user-attachments/assets/116c2103-f1b7-4687-af13-63a74aece513" />
+
+
+
