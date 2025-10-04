@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+  <Engineering version="V18" />
+  <SW.Blocks.GlobalDB ID="0">
+    <AttributeList>
+      <Interface><Sections xmlns="http://www.siemens.com/automation/Openness/SW/Interface/v5">
+  <Section Name="Static">
+    <Member Name="hwID" Datatype="HW_ANY" />
+    <Member Name="connID" Datatype="CONN_OUC">
+      <StartValue>1</StartValue>
+    </Member>
+    <Member Name="url" Datatype="String">
+      <Comment>
+        <MultiLanguageText Lang="en-US">'http://192.168.2.41:8885/data/v1/pipelines/getAccessLevel/value'</MultiLanguageText>
+      </Comment>
+      <StartValue>'http://192.168.2.41:8885/data/v1/pipelines/getAccessLevel/value'</StartValue>
+    </Member>
+    <Member Name="contentType" Datatype="String">
+      <Comment>
+        <MultiLanguageText Lang="en-US">'application/json'</MultiLanguageText>
+      </Comment>
+      <StartValue>'application/json'</StartValue>
+    </Member>
+    <Member Name="Head" Datatype="String" />
+    <Member Name="HeaderData" Datatype="Array[0..255] of Char">
+      <Subelement Path="0">
+        <StartValue>'A'</StartValue>
+      </Subelement>
+      <Subelement Path="1">
+        <StartValue>'u'</StartValue>
+      </Subelement>
+      <Subelement Path="2">
+        <StartValue>'t'</StartValue>
+      </Subelement>
+      <Subelement Path="3">
+        <StartValue>'h'</StartValue>
+      </Subelement>
+      <Subelement Path="4">
+        <StartValue>'o'</StartValue>
+      </Subelement>
+      <Subelement Path="5">
+        <StartValue>'r'</StartValue>
+      </Subelement>
+      <Subelement Path="6">
+        <StartValue>'i'</StartValue>
+      </Subelement>
+      <Subelement Path="7">
+        <StartValue>'z'</StartValue>
+      </Subelement>
+      <Subelement Path="8">
+        <StartValue>'a'</StartValue>
+      </Subelement>
+      <Subelement Path="9">
+        <StartValue>'t'</StartValue>
+      </Subelement>
+      <Subelement Path="10">
+        <StartValue>'i'</StartValue>
+      </Subelement>
+      <Subelement Path="11">
+        <StartValue>'o'</StartValue>
+      </Subelement>
+      <Subelement Path="12">
+        <StartValue>'n'</StartValue>
+      </Subelement>
+      <Subelement Path="13">
+        <StartValue>':'</StartValue>
+      </Subelement>
+      <Subelement Path="15">
+        <StartValue>'B'</StartValue>
+      </Subelement>
+      <Subelement Path="16">
+        <StartValue>'e'</StartValue>
+      </Subelement>
+      <Subelement Path="17">
+        <StartValue>'a'</StartValue>
+      </Subelement>
+      <Subelement Path="18">
+        <StartValue>'r'</StartValue>
+      </Subelement>
+      <Subelement Path="19">
+        <StartValue>'e'</StartValue>
+      </Subelement>
+      <Subelement Path="20">
+        <StartValue>'r'</StartValue>
+      </Subelement>
+      <Subelement Path="22">
+        <StartValue>'m'</StartValue>
+      </Subelement>
+      <Subelement Path="23">
+        <StartValue>'c'</StartValue>
+      </Subelement>
+      <Subelement Path="24">
+        <StartValue>'p'</StartValue>
+      </Subelement>
+      <Subelement Path="25">
+        <StartValue>'2'</StartValue>
+      </Subelement>
+      <Subelement Path="26">
+        <StartValue>'.'</StartValue>
+      </Subelement>
+      <Subelement Path="27">
+        <StartValue>'h'</StartValue>
+      </Subelement>
+      <Subelement Path="28">
+        <StartValue>'E'</StartValue>
+      </Subelement>
+      <Subelement Path="29">
+        <StartValue>'A'</StartValue>
+      </Subelement>
+      <Subelement Path="30">
+        <StartValue>'n'</StartValue>
+      </Subelement>
+      <Subelement Path="31">
+        <StartValue>'Q'</StartValue>
+      </Subelement>
+      <Subelement Path="32">
+        <StartValue>'W'</StartValue>
+      </Subelement>
+      <Subelement Path="33">
+        <StartValue>'4'</StartValue>
+      </Subelement>
+      <Subelement Path="34">
+        <StartValue>'o'</StartValue>
+      </Subelement>
+      <Subelement Path="35">
+        <StartValue>'s'</StartValue>
+      </Subelement>
+      <Subelement Path="36">
+        <StartValue>'V'</StartValue>
+      </Subelement>
+      <Subelement Path="37">
+        <StartValue>'8'</StartValue>
+      </Subelement>
+      <Subelement Path="38">
+        <StartValue>'l'</StartValue>
+      </Subelement>
+      <Subelement Path="39">
+        <StartValue>'r'</StartValue>
+      </Subelement>
+      <Subelement Path="40">
+        <StartValue>'Z'</StartValue>
+      </Subelement>
+      <Subelement Path="41">
+        <StartValue>'T'</StartValue>
+      </Subelement>
+      <Subelement Path="42">
+        <StartValue>'q'</StartValue>
+      </Subelement>
+      <Subelement Path="43">
+        <StartValue>'w'</StartValue>
+      </Subelement>
+      <Subelement Path="44">
+        <StartValue>'G'</StartValue>
+      </Subelement>
+      <Subelement Path="45">
+        <StartValue>'5'</StartValue>
+      </Subelement>
+      <Subelement Path="46">
+        <StartValue>'f'</StartValue>
+      </Subelement>
+      <Subelement Path="47">
+        <StartValue>'i'</StartValue>
+      </Subelement>
+      <Subelement Path="48">
+        <StartValue>'v'</StartValue>
+      </Subelement>
+      <Subelement Path="49">
+        <StartValue>'H'</StartValue>
+      </Subelement>
+      <Subelement Path="50">
+        <StartValue>'Z'</StartValue>
+      </Subelement>
+      <Subelement Path="51">
+        <StartValue>'n'</StartValue>
+      </Subelement>
+      <Subelement Path="52">
+        <StartValue>'j'</StartValue>
+      </Subelement>
+      <Subelement Path="53">
+        <StartValue>'2'</StartValue>
+      </Subelement>
+      <Subelement Path="54">
+        <StartValue>'C'</StartValue>
+      </Subelement>
+      <Subelement Path="55">
+        <StartValue>'7'</StartValue>
+      </Subelement>
+      <Subelement Path="56">
+        <StartValue>'Q'</StartValue>
+      </Subelement>
+      <Subelement Path="57">
+        <StartValue>'q'</StartValue>
+      </Subelement>
+      <Subelement Path="58">
+        <StartValue>'l'</StartValue>
+      </Subelement>
+      <Subelement Path="59">
+        <StartValue>'J'</StartValue>
+      </Subelement>
+      <Subelement Path="60">
+        <StartValue>'w'</StartValue>
+      </Subelement>
+      <Subelement Path="61">
+        <StartValue>'C'</StartValue>
+      </Subelement>
+      <Subelement Path="62">
+        <StartValue>'K'</StartValue>
+      </Subelement>
+      <Subelement Path="63">
+        <StartValue>'O'</StartValue>
+      </Subelement>
+      <Subelement Path="64">
+        <StartValue>'i'</StartValue>
+      </Subelement>
+      <Subelement Path="65">
+        <StartValue>'I'</StartValue>
+      </Subelement>
+      <Subelement Path="66">
+        <StartValue>'7'</StartValue>
+      </Subelement>
+      <Subelement Path="67">
+        <StartValue>'R'</StartValue>
+      </Subelement>
+      <Subelement Path="68">
+        <StartValue>'j'</StartValue>
+      </Subelement>
+      <Subelement Path="69">
+        <StartValue>'c'</StartValue>
+      </Subelement>
+      <Subelement Path="70">
+        <StartValue>'='</StartValue>
+      </Subelement>
+      <Subelement Path="71">
+        <StartValue>'$00'</StartValue>
+      </Subelement>
+    </Member>
+    <Member Name="responseData" Datatype="Array[0..1000] of Char" />
+  </Section>
+</Sections></Interface>
+      <MemoryLayout>Optimized</MemoryLayout>
+      <MemoryReserve>100</MemoryReserve>
+      <Name>DB_LHTTPParameters</Name>
+      <Namespace />
+      <Number>6</Number>
+      <ProgrammingLanguage>DB</ProgrammingLanguage>
+    </AttributeList>
+    <ObjectList>
+      <MultilingualText ID="1" CompositionName="Comment">
+        <ObjectList>
+          <MultilingualTextItem ID="2" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+      <MultilingualText ID="3" CompositionName="Title">
+        <ObjectList>
+          <MultilingualTextItem ID="4" CompositionName="Items">
+            <AttributeList>
+              <Culture>en-US</Culture>
+              <Text />
+            </AttributeList>
+          </MultilingualTextItem>
+        </ObjectList>
+      </MultilingualText>
+    </ObjectList>
+  </SW.Blocks.GlobalDB>
+</Document>
