@@ -32,7 +32,7 @@ to be added in claude_desktop_config.json
         "Authorization:${AUTH_HEADER}"
       ],
       "env": {
-        "AUTH_HEADER": "Bearer keyNodeR.QOGwAvImW9JVMvoquQYcK9M3hnO3u2Kj7npsh1KQWSI="
+        "AUTH_HEADER": "Bearer <your key>"
       }
     }
     
